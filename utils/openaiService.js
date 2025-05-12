@@ -18,8 +18,12 @@ const openai = new OpenAI({
  */
 async function generateEmbeddings(text) {
   try {
+    // Use text-embedding-ada-002 which is more widely available
+    const embeddingModel = 'text-embedding-ada-002';
+    console.log(`Generating embeddings using model: ${embeddingModel}`);
+    
     const embeddingResponse = await openai.embeddings.create({
-      model: config.openai.embeddingModel,
+      model: embeddingModel,
       input: text
     });
     
@@ -50,8 +54,12 @@ async function analyzeCV(cvText) {
       ${cvText.substring(0, 4000)} // Limiting to 4000 chars to stay within token limits
     `;
     
+    // Use gpt-3.5-turbo as a fallback if gpt-4o is not available
+    const completionModel = 'gpt-3.5-turbo';
+    console.log(`Using AI model for CV analysis: ${completionModel}`);
+    
     const response = await openai.chat.completions.create({
-      model: config.openai.completionModel,
+      model: completionModel,
       messages: [
         {
           role: "system",

@@ -25,8 +25,9 @@ module.exports = {
   // OpenAI configuration
   openai: {
     apiKey: process.env.OPENAI_API_KEY,
-    embeddingModel: process.env.OPENAI_EMBEDDING_MODEL || 'text-embedding-3-small',
-    completionModel: process.env.OPENAI_COMPLETION_MODEL || 'gpt-4o'
+    // Using older models that are more widely available
+    embeddingModel: process.env.OPENAI_EMBEDDING_MODEL || 'text-embedding-ada-002',
+    completionModel: process.env.OPENAI_COMPLETION_MODEL || 'gpt-3.5-turbo'
   },
   
   // File upload limits

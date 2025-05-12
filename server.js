@@ -40,8 +40,6 @@ const startServer = async () => {
     const PORT = config.port;
     app.listen(PORT, () => {
       console.log(`Server running in ${config.nodeEnv} mode on port ${PORT}`);
-      console.log(`Health check available at: http://localhost:${PORT}/health`);
-      console.log(`API available at: http://localhost:${PORT}/api/cv`);
     });
   } catch (error) {
     console.error('Failed to start server:', error);

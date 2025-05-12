@@ -57,8 +57,8 @@ cv-picker/
    
    # OpenAI Configuration
    OPENAI_API_KEY=your_openai_api_key_here
-   OPENAI_EMBEDDING_MODEL=text-embedding-3-small
-   OPENAI_COMPLETION_MODEL=gpt-4o
+   OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
+   OPENAI_COMPLETION_MODEL=gpt-3.5-turbo
    
    # File Upload Limits
    MAX_FILE_SIZE=10485760
@@ -78,8 +78,8 @@ The application uses the following environment variables:
 | NODE_ENV | The environment mode (development/production) | development |
 | MONGODB_URI | MongoDB connection string | mongodb://127.0.0.1:27017/cvDatabase |
 | OPENAI_API_KEY | Your OpenAI API key (required) | none |
-| OPENAI_EMBEDDING_MODEL | The OpenAI model for embeddings | text-embedding-3-small |
-| OPENAI_COMPLETION_MODEL | The OpenAI model for CV analysis | gpt-4o |
+| OPENAI_EMBEDDING_MODEL | The OpenAI model for embeddings | text-embedding-ada-002 |
+| OPENAI_COMPLETION_MODEL | The OpenAI model for CV analysis | gpt-3.5-turbo |
 | MAX_FILE_SIZE | Maximum allowed size for CV uploads in bytes | 10485760 (10MB) |
 
 ## API Endpoints
