@@ -6,8 +6,10 @@ A modern CV/Resume management system that uses OpenAI embeddings for semantic se
 
 - **PDF CV Upload**: Upload and parse PDF resumes
 - **AI-Powered Analysis**: Extract structured data from CVs using OpenAI
-- **Vector Search**: Find relevant CVs using semantic similarity
-- **Filtering**: Filter search results by skills, experience, and other criteria
+- **Advanced Search**: Multiple search methods with comprehensive filtering options
+- **Vector & Text Search**: Find CVs using semantic similarity or text-based search
+- **Flexible Filtering**: Filter by skills, experience, job titles, education and more
+- **Sorting & Pagination**: Order results and paginate for better browsing
 
 ## Technology Stack
 
@@ -84,9 +86,49 @@ The application uses the following environment variables:
 
 ## API Endpoints
 
+### Upload
 - **POST /api/cv/upload**: Upload a new CV (PDF file)
-- **POST /api/cv/search**: Search for CVs with semantic similarity
+
+### Search
+- **POST /api/cv/search**: Advanced CV search with filtering, sorting and pagination
+- **GET /api/cv/search**: Simple search via query parameters
+- **GET /api/cv/metadata**: Get metadata for search filters (skills, job titles, etc.)
 - **GET /api/cv/:id**: Get a specific CV by ID
+
+### Search Parameters
+
+#### POST /api/cv/search
+Request body:
+```json
+{
+  "query": "javascript developer",
+  "limit": 10,
+  "page": 1,
+  "sortBy": "relevance",
+  "sortOrder": "desc",
+  "searchType": "auto",
+  "filters": {
+    "skills": ["JavaScript", "React"],
+    "skillsLogic": "AND",
+    "experience": {
+      "min": 2,
+      "max": 5
+    },
+    "jobTitles": ["Frontend Developer", "UI Developer"],
+    "education": ["Computer Science"],
+    "dateRange": {
+      "from": "2023-01-01",
+      "to": "2023-12-31"
+    }
+  }
+}
+```
+
+#### GET /api/cv/search
+Query parameters:
+```
+/api/cv/search?q=javascript&skills=React,Node.js&experience=2-5&page=1&limit=10&sortBy=experience&sortOrder=desc
+```
 
 ## MongoDB Setup
 
